@@ -1,0 +1,9 @@
+<div class="canvas" [ngStyle]="canvasHeight">
+  <div class="renderer"
+       *ngFor="let item of visibleProvider"
+       (click)="onClickOption(item)"
+       [ngStyle]="item.styles"
+       >
+    <span>{{item.label}}</span>
+  </div>
+</div>
