@@ -1,10 +1,8 @@
 # MnhVirtualList
 
-# MnhVirtualList
-
 This project is an attempt to make a virtual list component that can be used to do almost infinite scroll.
 
-It is based off the tutorial at [To fucking developers (cached version)](http://webcache.googleusercontent.com/search?q=cache:qw-WJyd40rEJ:twofuckingdevelopers.com/2014/11/angularjs-virtual-list-directive-tutorial/+&cd=1&hl=en&ct=clnk&gl=dk)
+It is based off the tutorial at [Two fucking developers (cached version)](http://webcache.googleusercontent.com/search?q=cache:qw-WJyd40rEJ:twofuckingdevelopers.com/2014/11/angularjs-virtual-list-directive-tutorial/+&cd=1&hl=en&ct=clnk&gl=dk)
 
 The base of this project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.3.
 
