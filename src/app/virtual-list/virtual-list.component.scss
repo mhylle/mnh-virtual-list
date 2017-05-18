@@ -1,72 +1,29 @@
-ui-virtual-list {
-  width: 200px;
+.canvas {
   overflow-y: auto;
   display: block;
-  .canvas {
-    background-color: #eee;
-    position: relative;
-  }
-  div.renderer {
-    display: block;
-    width: 100%;
-    cursor: pointer;
-    position: absolute;
-    height: 30px;
-    line-height: 30px;
-    span {
-      margin-left: 10px;
-    }
-
-    &.selected {
-      background-color: #ccc;
-    }
-    &.hover {
-      background-color: #666;
-      color: white;
-    }
-  }
-}
-
-
-.row {
-  margin: 0 !important;
-}
-
-.selectedOption {
-  width: 300px;
-  display: inline-block;
-}
-
-ui-virtual-list {
-  width: 200px;
-  max-height: 200px;
-  overflow-y: auto;
-  display: block;
-}
-
-ui-virtual-list .canvas {
-  background-color: #eee;
+  height: 300px;
+  max-height: 300px;
+  background-color: #abc;
   position: relative;
 }
-
-ui-virtual-list div.renderer {
+div.renderer {
   display: block;
   width: 100%;
   cursor: pointer;
   position: absolute;
-  height: 30px;
-  line-height: 30px;
+  height: 24px;
+  line-height: 24px;
+  background-color: aquamarine;
+  span {
+    margin-left: 10px;
+  }
+
+  &.selected {
+    background-color: #eda;
+  }
+  &.hover {
+    background-color: #666;
+    color: white;
+  }
 }
 
-ui-virtual-list div.renderer span {
-  margin-left: 10px;
-}
-
-ui-virtual-list div.renderer.selected {
-  background-color: #ccc;
-}
-
-ui-virtual-list div.renderer:hover {
-  background-color: #666;
-  color: white;
-}

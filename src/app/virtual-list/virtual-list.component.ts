@@ -1,4 +1,5 @@
 import {Component, HostListener, Input, OnInit} from "@angular/core";
+import {isUndefined} from "util";
 
 @Component({
   selector: 'virtual-list',
@@ -8,8 +9,8 @@ import {Component, HostListener, Input, OnInit} from "@angular/core";
 export class VirtualListComponent implements OnInit {
 
   uiDataProvider: any[] = [];
-  rowHeight: number = 30;
-  height: number = 200;
+  rowHeight: number = 24;
+  height: number = 300;
   scrollTop: number = 0;
   visibleProvider: any[];
   cellsPerPage: number = 0;
@@ -20,10 +21,11 @@ export class VirtualListComponent implements OnInit {
   }
 
   ngOnInit() {
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 10000; i++) {
       this.uiDataProvider.push({index: i, label: "label " + i, value: "value: " + i});
     }
     this.cellsPerPage = Math.round(this.height / this.rowHeight);
+    console.log("cellsPerPage: " + this.cellsPerPage)
     this.numberOfCells = 3 * this.cellsPerPage;
     let number = this.uiDataProvider.length * this.rowHeight;
     console.log("number: " + number);
@@ -37,18 +39,24 @@ export class VirtualListComponent implements OnInit {
     let firstCell = Math.max(Math.floor(this.scrollTop / this.rowHeight) - this.cellsPerPage, 0);
     let cellsToCreate = Math.min(firstCell + this.numberOfCells, this.numberOfCells);
     this.visibleProvider = this.uiDataProvider.slice(firstCell, firstCell + cellsToCreate);
-
+    console.log('updateDisplayList')
     for (let i = 0; i < this.visibleProvider.length; i++) {
+      let topPos = ((firstCell + i) * this.rowHeight);
+      console.log('TopPos: ' + topPos);
       this.visibleProvider[i].styles = {
-        'top': ((firstCell + i) * this.rowHeight) + "px"
+        'top': topPos + "px;"
       };
     }
   }
 
   @HostListener('scroll', ['$event'])
   onScroll(event) {
-    this.scrollTop = event.scrollTop;
-    this.updateDisplayList();
+    // console.log('updating scrolltop!');
+    if (event != null && !isUndefined(event)) {
+      // this.scrollTop = event.scrollTop;
+      console.log('updating scrolltop!' + event.scrollTop);
+      this.updateDisplayList();
+    }
   }
 
   onClickOption() {
