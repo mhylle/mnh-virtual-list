@@ -1,18 +1,18 @@
 <div class="canvas" (scroll)="onScroll($event)" [ngStyle]="canvasHeight">
-  <div class="renderer">
-  <div *ngFor="let item of visibleProvider"[ngStyle]="item.styles">
-    <span>{{item.label}}</span>
-  </div>
-  </div>
+<div class="renderer">
+<div *ngFor="let item of visibleProvider" [ngStyle]="item.styles">
+<span>{{item.label}}</span>
+</div>
+</div>
 </div>
 
 
 <!--<div class="canvas" [ngStyle]="canvasHeight">-->
-  <!--<div class="renderer"-->
-       <!--*ngFor="let item of visibleProvider"-->
-       <!--(click)="onClickOption(item)"-->
-       <!--[ngStyle]="item.styles"-->
-  <!--&gt;-->
-    <!--<span>{{item.label}}</span>-->
-  <!--</div>-->
+<!--<div class="renderer"-->
+<!--*ngFor="let item of visibleProvider"-->
+<!--(click)="onClickOption(item)"-->
+<!--[ngStyle]="item.styles"-->
+<!--&gt;-->
+<!--<span>{{item.label}}</span>-->
+<!--</div>-->
 <!--</div>-->

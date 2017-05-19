@@ -1,5 +1,4 @@
-import {Component, HostListener, Input, OnInit} from "@angular/core";
-import {isUndefined} from "util";
+import {Component, HostListener, OnInit} from "@angular/core";
 
 @Component({
   selector: 'virtual-list',
@@ -39,24 +38,28 @@ export class VirtualListComponent implements OnInit {
     let firstCell = Math.max(Math.floor(this.scrollTop / this.rowHeight) - this.cellsPerPage, 0);
     let cellsToCreate = Math.min(firstCell + this.numberOfCells, this.numberOfCells);
     this.visibleProvider = this.uiDataProvider.slice(firstCell, firstCell + cellsToCreate);
-    console.log('updateDisplayList')
+
     for (let i = 0; i < this.visibleProvider.length; i++) {
       let topPos = ((firstCell + i) * this.rowHeight);
-      console.log('TopPos: ' + topPos);
       this.visibleProvider[i].styles = {
-        'top': topPos + "px;"
+        'top': topPos + "px;",
+        'background-color': 'lightgrey',
+        'border': '1px solid black'
       };
     }
   }
 
   @HostListener('scroll', ['$event'])
   onScroll(event) {
-    // console.log('updating scrolltop!');
-    if (event != null && !isUndefined(event)) {
-      // this.scrollTop = event.scrollTop;
-      console.log('updating scrolltop!' + event.scrollTop);
-      this.updateDisplayList();
-    }
+    // do tracking
+    // console.log('scrolled', event.target.scrollTop);
+    // Listen to click events in the component
+    // let tracker = event.target;
+    this.scrollTop = event.target.scrollTop;
+    console.log("scrollTop: " + this.scrollTop);
+    // let limit = tracker.scrollHeight - tracker.clientHeight;
+    // console.log(event.target.scrollTop, limit);
+    this.updateDisplayList();
   }
 
   onClickOption() {
