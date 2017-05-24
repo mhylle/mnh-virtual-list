@@ -23,8 +23,8 @@ export class VirtualListComponent implements OnInit {
     for (let i = 0; i < 10000; i++) {
       this.uiDataProvider.push({index: i, label: "label " + i, value: "value: " + i});
     }
-    this.cellsPerPage = Math.round(this.height / this.rowHeight);
-    console.log("cellsPerPage: " + this.cellsPerPage)
+    this.cellsPerPage = Math.floor(this.height / this.rowHeight);
+    console.log("cellsPerPage: " + this.cellsPerPage);
     this.numberOfCells = 3 * this.cellsPerPage;
     let number = this.uiDataProvider.length * this.rowHeight;
     console.log("number: " + number);
@@ -35,9 +35,18 @@ export class VirtualListComponent implements OnInit {
   }
 
   updateDisplayList() {
-    let firstCell = Math.max(Math.floor(this.scrollTop / this.rowHeight) - this.cellsPerPage, 0);
-    let cellsToCreate = Math.min(firstCell + this.numberOfCells, this.numberOfCells);
-    this.visibleProvider = this.uiDataProvider.slice(firstCell, firstCell + cellsToCreate);
+    let cellStart = Math.floor(this.scrollTop / this.rowHeight);
+    let calculatedCellStart = cellStart - this.cellsPerPage;
+    let firstCell = Math.max(calculatedCellStart, 0);
+    // firstCell is the index that we need to start our visible list from
+    // it should start either at 0 or the amount of cellsper page before our start.
+
+    let lastCell = Math.min(firstCell + this.numberOfCells, this.uiDataProvider.length);
+    console.log("firstCell: " + firstCell + " lastCell: " + lastCell);
+    // let cellsToCreate = Math.max(firstCell + this.numberOfCells, this.numberOfCells);
+
+
+    this.visibleProvider = this.uiDataProvider.slice(firstCell, lastCell);
 
     for (let i = 0; i < this.visibleProvider.length; i++) {
       let topPos = ((firstCell + i) * this.rowHeight);

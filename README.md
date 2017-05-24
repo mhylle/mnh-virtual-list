@@ -2,7 +2,29 @@
 
 This project is an attempt to make a virtual list component that can be used to do almost infinite scroll.
 
-It is based off the tutorial at [Two fucking developers (cached version)](http://webcache.googleusercontent.com/search?q=cache:qw-WJyd40rEJ:twofuckingdevelopers.com/2014/11/angularjs-virtual-list-directive-tutorial/+&cd=1&hl=en&ct=clnk&gl=dk)
+API:
+
+<hi-list [data]="items" [headers]="headers" [orientation]="vertical" [cell-classes]="[cell1,cell2]" [use-data-label]="true></hi-list>
+
+data: array of items to be shown - required - 
+ can be json data in the array which will then be divided into columns
+headers: optional
+orientation: vertical | horizontal - optional defaults to horizontal
+cell-classes: array of classes - optional - defaults to empty - classes to be used for the individual cells, if only 1 is specified it will be used for all cells.
+
+use-data-label: true | false - optional- defaults to false. if data was an array of json data use the name of the cell as a label for the cell. (if set to true)
+
+
+
+
+
+
+
+
+
+
+Some of it is based off the tutorial at [Two fucking developers (cached version)](http://webcache.googleusercontent.com/search?q=cache:qw-WJyd40rEJ:twofuckingdevelopers.com/2014/11/angularjs-virtual-list-directive-tutorial/+&cd=1&hl=en&ct=clnk&gl=dk)
+
 
 The base of this project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.3.
 
