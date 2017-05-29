@@ -1,18 +1,15 @@
-<div class="canvas" (scroll)="onScroll($event)" [ngStyle]="canvasHeight">
-<div class="renderer">
-<div *ngFor="let item of visibleProvider" [ngStyle]="item.styles">
-<span>{{item.label}}</span>
+<div class="col-lg-6 col-md-6 col-sm-6">
+  <div class="canvas" (scroll)="onScroll($event)" [ngStyle]="canvasHeight">
+    <div class="renderer">
+      <div *ngFor="let item of visibleProvider" [ngStyle]="item.styles" (click)="onSelected(item)">
+        <span>{{item.label}}</span>
+      </div>
+    </div>
+  </div>
 </div>
-</div>
+<div class="col-lg-6 col-md-6 col-sm-6">
+  <div class="selectedOption">
+    {{currentItem | json}}
+  </div>
 </div>
 
-
-<!--<div class="canvas" [ngStyle]="canvasHeight">-->
-<!--<div class="renderer"-->
-<!--*ngFor="let item of visibleProvider"-->
-<!--(click)="onClickOption(item)"-->
-<!--[ngStyle]="item.styles"-->
-<!--&gt;-->
-<!--<span>{{item.label}}</span>-->
-<!--</div>-->
-<!--</div>-->
